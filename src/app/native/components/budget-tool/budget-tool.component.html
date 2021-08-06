@@ -1,18 +1,18 @@
 <div class="container">
   <mcalizzi-nav *ngIf="loaded" class="mb-3">
-    <ng-template ApplyRef="Savings">
+    <ng-template ApplyRef="Savings" [disable]="disabled.salaryInfo">
       <savings-info (formSubmitted)="updateDisabled()"></savings-info>
     </ng-template>
-    <ng-template ApplyRef="Housing" [disable]="disabled.housing">
+    <ng-template ApplyRef="Housing" [disable]="disabled.homeInfo">
       <home-info (formSubmitted)="updateDisabled()"></home-info>
     </ng-template>
-    <ng-template ApplyRef="Transportation" [disable]="disabled.transportation">
+    <ng-template ApplyRef="Transportation" [disable]="disabled.carInfo">
       <car-info (formSubmitted)="updateDisabled()"></car-info>
     </ng-template>
-    <ng-template ApplyRef="Other" [disable]="disabled.other">
+    <ng-template ApplyRef="Other" [disable]="disabled.otherInfo">
       <other-info (formSubmitted)="updateDisabled()"></other-info>
     </ng-template>
-    <ng-template ApplyRef="Summary" [disable]="disabled.other">
+    <ng-template ApplyRef="Summary" [disable]="disabled.summary">
       <app-summary></app-summary>
     </ng-template>
   </mcalizzi-nav>

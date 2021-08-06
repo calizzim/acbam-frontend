@@ -13,13 +13,9 @@ export class BudgetToolComponent implements OnInit{
   loaded = false
 
   async updateDisabled() {
-    let c = await this.http.get('forms/completed')
-    this.disabled = {
-      housing: !c.salaryInfo,
-      transportation: !c.homeInfo,
-      other: !c.carInfo,
-      summary: !c.otherInfo
-    }
+    let c = await this.http.get('forms/ready')
+    for(let k in c) { c[k] = !c[k] }
+    this.disabled = c 
   }
 
   async ngOnInit() {

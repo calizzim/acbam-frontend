@@ -10,7 +10,7 @@ export class OtherInfoComponent implements OnInit {
   constructor() { }
   ngOnInit(): void {
   }
-  submitForm(data) {
+  submitForm() {
     this.formSubmitted.emit()
   }
 
