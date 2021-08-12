@@ -33,6 +33,10 @@ import { SummaryComponent } from './native/components/summary/summary.component'
 import { McalizziRangePieComponent } from './reusable/components/mcalizzi-range-pie/mcalizzi-range-pie.component';
 import { SizeClassDirective } from './reusable/directives/size-class.directive';
 import { McalizziHomeFeaturesComponent } from './reusable/components/mcalizzi-home-features/mcalizzi-home-features.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PopoverComponent } from './reusable/components/popover/popover.component';
+import { TestChildComponent } from './native/components/test-child/test-child.component';
+import { TestDirective } from './native/directives/test.directive'
 
 @NgModule({
   declarations: [
@@ -61,7 +65,10 @@ import { McalizziHomeFeaturesComponent } from './reusable/components/mcalizzi-ho
     SummaryComponent,
     McalizziRangePieComponent,
     SizeClassDirective,
-    McalizziHomeFeaturesComponent
+    McalizziHomeFeaturesComponent,
+    PopoverComponent,
+    TestChildComponent,
+    TestDirective,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -70,6 +77,7 @@ import { McalizziHomeFeaturesComponent } from './reusable/components/mcalizzi-ho
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FontAwesomeModule,
     RouterModule.forRoot([
       {
         path: 'budgetTool', 
@@ -83,6 +91,10 @@ import { McalizziHomeFeaturesComponent } from './reusable/components/mcalizzi-ho
       {
         path: 'login', 
         component: McalizziLoginComponent, 
+      },
+      {
+        path: 'test', 
+        component: TestComponent, 
       },
       {
         path: '', 

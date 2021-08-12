@@ -13,7 +13,7 @@ export class BudgetToolComponent implements OnInit{
   loaded = false
 
   async updateDisabled() {
-    let c = await this.http.get('forms/ready')
+    let c = await this.http.getReadyForms()
     for(let k in c) { c[k] = !c[k] }
     this.disabled = c 
   }

@@ -20,7 +20,7 @@ export class SummaryComponent implements OnInit {
   loaded=false;
 
   async ngOnInit() {
-    this.c = (await this.http.get('forms/summary')).data.computed;
+    this.c = (await this.http.uploadForm({},'summary'));
     this.startAge = this.c.dataOverTime.xvalues[1];
     this.endAge = this.c.dataOverTime.xvalues.slice(-1)[0];
     this.age = this.startAge;
