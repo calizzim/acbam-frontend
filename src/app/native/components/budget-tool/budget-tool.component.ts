@@ -1,5 +1,6 @@
+import { McalizziNavComponent } from './../../../reusable/components/mcalizzi-nav/mcalizzi-nav.component';
 import { BackendRequestService } from '../../../reusable/services/backend-request.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterContentInit, ContentChild, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'budget-tool',
@@ -7,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./budget-tool.component.css']
 })
 
-export class BudgetToolComponent implements OnInit{
+export class BudgetToolComponent implements OnInit {
   constructor(private http:BackendRequestService) {}
+  @ViewChild(McalizziNavComponent) nav:McalizziNavComponent
   disabled
   loaded = false
 

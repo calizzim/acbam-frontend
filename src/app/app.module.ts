@@ -93,10 +93,6 @@ import { TestDirective } from './native/directives/test.directive'
         component: McalizziLoginComponent, 
       },
       {
-        path: 'test', 
-        component: TestComponent, 
-      },
-      {
         path: '', 
         component: HomeComponent, 
       },

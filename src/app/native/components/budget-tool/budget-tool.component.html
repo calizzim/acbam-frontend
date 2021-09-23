@@ -1,5 +1,5 @@
 <div class="container">
-  <mcalizzi-nav *ngIf="loaded" class="mb-3">
+  <mcalizzi-nav *ngIf="loaded" class="mb-3" #nav>
     <ng-template ApplyRef="Savings" [disable]="disabled.salaryInfo">
       <savings-info (formSubmitted)="updateDisabled()"></savings-info>
     </ng-template>
@@ -10,7 +10,7 @@
       <car-info (formSubmitted)="updateDisabled()"></car-info>
     </ng-template>
     <ng-template ApplyRef="Other" [disable]="disabled.otherInfo">
-      <other-info (formSubmitted)="updateDisabled()"></other-info>
+      <other-info (formSubmitted)="updateDisabled(); nav.navigate('Summary')"></other-info>
     </ng-template>
     <ng-template ApplyRef="Summary" [disable]="disabled.summary">
       <app-summary></app-summary>

@@ -15,21 +15,8 @@ export class SavingsInfoComponent {
     public currencyLetters: CurrencyLettersPipe) { }
   @Output() formSubmitted:EventEmitter<any> = new EventEmitter()
 
-  collapsed = true
-  templateName = 'salaryInfo'
-  dataCalculated = false
-  c
-  startAge
-  endAge
-  age
-
   submitForm(data) {
-    this.c = data
-    this.startAge = this.c.netWorthChart.xvalues[1]
-    this.endAge = this.c.netWorthChart.xvalues.slice(-1)[0]
-    this.age = this.startAge
     this.formSubmitted.emit()
-    this.dataCalculated = true
   }
 }
 

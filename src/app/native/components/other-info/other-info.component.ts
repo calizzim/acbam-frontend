@@ -11,6 +11,7 @@ export class OtherInfoComponent implements OnInit {
   ngOnInit(): void {
   }
   submitForm() {
+    
     this.formSubmitted.emit()
   }
 

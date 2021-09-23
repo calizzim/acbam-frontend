@@ -13,16 +13,7 @@ export class CarInfoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  startAge
-  endAge
-  age
-
-  c
   submitForm(data) {
-    this.c = data
-    this.startAge = this.c.dataOverTime.xvalues[1]
-    this.endAge = this.c.dataOverTime.xvalues.slice(-1)[0]
-    this.age = this.startAge
     this.formSubmitted.emit()
   }
 }

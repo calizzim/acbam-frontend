@@ -1,47 +1,44 @@
 <div></div>
-<mcalizzi-form
-  templateName="homeInfo"
-  (formSubmitted)="submitForm($event)"
-></mcalizzi-form>
-
-<div *ngIf="c">
-  <div class="row">
-    <div class="col-12">
-      <div class="alert alert-info">
-        you have {{ c.leftOver/12 | currency }} to spend per month
+<mcalizzi-form templateName="homeInfo" (formSubmitted)="submitForm($event)" #f>
+  <ng-template #c>
+    <div class="row">
+      <div class="col-12">
+        <div class="alert alert-info">
+          you have {{ f.c.leftOver / 12 | currency }} to spend per month
+        </div>
+        <mcalizzi-table
+          [cr-data]="[
+            ['Down Payment', f.c.downPayment | currency],
+            [
+              'Monthly Housing Payment',
+              f.c.dataOverTime.yvalues[1].payments.total | currency
+            ]
+          ]"
+        ></mcalizzi-table>
       </div>
-      <mcalizzi-table
-        [cr-data]="[
-          ['Down Payment', c.downPayment | currency],
-          ['Monthly Housing Payment', c.dataOverTime.yvalues[1].payments.total | currency]
-        ]"
-      ></mcalizzi-table>
+      <div class="col-12 col-lg-7">
+        <h4 class="text-center">Dollar Equity In Home</h4>
+        <mcalizzi-linechart
+          [cr-data]="f.c.equityInHomeChart"
+          [co-xaxis]="'your age' | titlecase"
+          [co-yaxis]="'net profit from selling home' | titlecase"
+          [co-yaxis-pipe]="currencyLetters"
+          co-tooltip-prefix="Age"
+        ></mcalizzi-linechart>
+      </div>
+      <div class="col-12 col-lg-5">
+        <h4 class="text-center">Payment Breakdown</h4>
+        <mcalizzi-range-pie
+          [cr-data]="{
+            xvalues: f.c.paymentBreakdownChart.labels,
+            yvalues: f.c.paymentBreakdownChart.yvalues
+          }"
+          [co-yaxis-pipe]="currencyLetters"
+          [co-range-offset]="f.c.currentAge"
+          cr-range-title="Age"
+        >
+        </mcalizzi-range-pie>
+      </div>
     </div>
-    <div class="col-12 col-lg-7">
-      <h4 class="text-center">Dollar Equity In Home</h4>
-      <mcalizzi-linechart
-        [cr-data]="c.equityInHomeChart"
-        [co-xaxis]="'your age' | titlecase"
-        [co-yaxis]="'net profit from selling home' | titlecase"
-        [co-yaxis-pipe]="currencyLetters"
-        co-tooltip-prefix="Age"
-      ></mcalizzi-linechart>
-    </div>
-    <div class="col-12 col-lg-5">
-      <h4 class="text-center">Payment Breakdown</h4>
-      <mcalizzi-piechart
-        [cr-data]="{
-          xvalues: c.paymentBreakdownChart.labels,
-          yvalues: c.paymentBreakdownChart.yvalues[age-startAge]
-        }"
-        [co-yaxis-pipe]="currencyLetters"
-      ></mcalizzi-piechart>
-      <mcalizzi-range
-        [cr-min]="startAge"
-        [cr-max]="endAge"
-        [(cr-value)]="age"
-        cr-title="Age"
-      ></mcalizzi-range>
-    </div>
-  </div>
-</div>
+  </ng-template>
+</mcalizzi-form>

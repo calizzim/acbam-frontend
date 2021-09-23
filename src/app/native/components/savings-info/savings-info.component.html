@@ -1,13 +1,13 @@
 <mcalizzi-form 
-[templateName]="templateName"
+templateName="salaryInfo"
 (formSubmitted)="submitForm($event)"
-></mcalizzi-form>
-<div *ngIf = "dataCalculated">
+#f>
+  <ng-template #c>
     <div class="row">
       <div class="col-12 col-lg-7">
         <h4 class="text-center">Net Worth From Savings</h4>
         <mcalizzi-linechart
-          [cr-data]="c.netWorthChart"
+          [cr-data]="f.c.netWorthChart"
           [co-xaxis]="'your age' | titlecase"
           [co-yaxis]="'net worth from savings' | titlecase"
           [co-yaxis-pipe]="currencyLetters"
@@ -16,20 +16,16 @@
       </div>
       <div class="col-12 col-lg-5">
         <h4 class="text-center">Salary Breakdown</h4>
-        <mcalizzi-piechart
-          [cr-data]="{
-            xvalues: c.spendingPercentagesChart.labels,
-            yvalues: c.spendingPercentagesChart.yvalues[age-startAge]
-          }"
-          [co-yaxis-pipe]="currencyLetters"
-          co-total-title="Pre-tax Salary"
-        ></mcalizzi-piechart>
-        <mcalizzi-range
-          [cr-min]="startAge"
-          [cr-max]="endAge"
-          [(cr-value)]="age"
-          cr-title="Age"
-        ></mcalizzi-range>
+        <mcalizzi-range-pie
+        [cr-data]="{
+          xvalues: f.c.spendingPercentagesChart.labels,
+          yvalues: f.c.spendingPercentagesChart.yvalues
+        }"
+        cr-range-title='Age'
+        [co-yaxis-pipe]='currencyLetters'
+        [co-range-offset]='f.n.currentAge + 1'>
+        </mcalizzi-range-pie>
       </div>
     </div>
-</div>
+  </ng-template>
+</mcalizzi-form>

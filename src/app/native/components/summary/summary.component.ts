@@ -13,17 +13,11 @@ export class SummaryComponent implements OnInit {
     private http: BackendRequestService
   ) {}
 
-  startAge;
-  endAge;
-  age;
-  c;
   loaded=false;
+  c = null;
 
   async ngOnInit() {
-    this.c = (await this.http.uploadForm({},'summary'));
-    this.startAge = this.c.dataOverTime.xvalues[1];
-    this.endAge = this.c.dataOverTime.xvalues.slice(-1)[0];
-    this.age = this.startAge;
+    this.c = (await this.http.uploadForm({},'summary')).computed;
     this.loaded=true
   }
 }
